@@ -1,0 +1,9 @@
+Package: com.haoict.crackerxisearchbar
+Name: CrackerXI Add Search Bar
+Depends: mobilesubstrate, firmware (>= 10)
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Add Search Bar for CrackerXI+
+Maintainer: Hao Nguyen
+Author: Hao Nguyen
+Section: Tweaks
