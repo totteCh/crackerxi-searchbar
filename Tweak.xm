@@ -35,6 +35,11 @@
       return;
     }
 
+    // Sort apps alphabetically.
+    newAppsList = [[newAppsList sortedArrayUsingComparator:^(RPVApplication* obj1, RPVApplication* obj2) {
+      return [[obj1 applicationName] compare:[obj2 applicationName]];
+    }] mutableCopy];
+    MSHookIvar<NSMutableArray *>(self, "newAppsList") = newAppsList;
     self.allAppList = [newAppsList ?: @[] mutableCopy];
     self.searchBox.placeholder = @"Search for app name";
   }
