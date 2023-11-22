@@ -2,7 +2,6 @@
 
 %hook FirstViewController
   %property (nonatomic, retain) UITextField *searchBox;
-  %property (nonatomic, retain) NSTimer *searchTimer;
   %property (nonatomic, retain) NSMutableArray *allAppList;
 
   - (void)viewDidLoad {
@@ -42,11 +41,6 @@
 
   %new
   - (void)searchBoxTextFieldDidChange:(UITextField *)sender {
-    if (self.searchTimer != nil) {
-      [self.searchTimer invalidate];
-      self.searchTimer = nil;
-    }
-
     NSString *keyword = [self.searchBox.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     if ([keyword length] == 0) {
       MSHookIvar<NSMutableArray *>(self, "newAppsList") = self.allAppList;
@@ -54,12 +48,6 @@
       return;
     }
 
-    self.searchTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(searchTimerEnd:) userInfo:keyword repeats:NO];
-  }
-
-  %new
-  - (void)searchTimerEnd:(NSTimer *)timer {
-    NSString *keyword = (NSString*)timer.userInfo;
     NSMutableArray *result = [@[] mutableCopy];
 
     if (!self.allAppList || !self.allAppList.count) {
