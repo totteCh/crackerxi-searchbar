@@ -1,5 +1,4 @@
 #import <Foundation/Foundation.h>
-#import <libhdev/HUtilities/HCommon.h>
 
 @interface RPVApplication : NSObject
 - (NSString *)applicationName;

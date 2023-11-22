@@ -6,7 +6,6 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = crackerxisearchbar
 crackerxisearchbar_FILES = $(wildcard *.xm *.m)
-crackerxisearchbar_EXTRA_FRAMEWORKS = libhdev
 crackerxisearchbar_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
